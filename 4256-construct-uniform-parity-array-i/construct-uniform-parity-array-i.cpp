@@ -47,6 +47,27 @@ public:
         }
         if (c==nums1.size()) return true;    
         else return false;    */
-        return true;
+        int oddc1=0,evec1=0,oddc2=0,evec2=0;
+        for(int i=0;i<nums1.size();i++){
+            if(nums1[i]%2==0){
+                oddc1++;
+            }
+            evec1++;
+
+        }
+        
+        for(int i=0;i<nums1.size();i++){
+            if(nums1[i]%2==0){
+                oddc2++;
+            }
+            evec2++;
+
+        }
+
+        if(oddc1==oddc2 && evec1==evec2){
+            return true;
+        }
+        else return false;
+
     }
 };
