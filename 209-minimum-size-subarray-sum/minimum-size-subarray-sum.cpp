@@ -1,25 +1,31 @@
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
+        //Now the main error is for time limit exceeding here now how can i optimize here these cases
 
-        int left = 0;
-        int sum = 0;
-        int minlen = INT_MAX;
+        //1st I have to reduce the loop case check what is needed here not the whole combinations here  
+        
+        
+//imp syntax here
+//after sorting here [1,2,2,3,3,4]
 
-        for(int right = 0; right < nums.size(); right++) {
-
-            sum += nums[right];
-
-            // Try shrinking the window
-            while(sum >= target) {
-
-                minlen = min(minlen, right - left + 1);
-
-                sum -= nums[left];
-                left++;
+        int minlen=nums.size()+1;
+        int j=0;
+        int s=0;
+        
+        for(int i=0;i<nums.size();i++){
+            s+=nums[i];
+            
+            while(s>=target){
+                minlen=min(i-j+1,minlen);
+                s-=nums[j];
+                j++;
             }
+            
+            
         }
+        if(minlen==nums.size()+1){return 0;}
 
-        return minlen == INT_MAX ? 0 : minlen;
+        return minlen;   
     }
 };
